@@ -2,6 +2,7 @@
 var util = require('util');
 var path = require('path');
 var yeoman = require('yeoman-generator');
+var ustring = require('underscore.string');
 
 
 var PlonemockupGenerator = module.exports = function PlonemockupGenerator(args, options, config) {
@@ -63,7 +64,12 @@ PlonemockupGenerator.prototype.askFor = function askFor() {
     name: 'packageLicense',
     message: 'Choose a license for your project (GPLv2/GPLv3/MIT)',
     default: "GPLv2"
+  },
+  {
+    name: 'patternName',
+    message: 'Choose a name for your pattern'
   }
+
   ];
 
   this.prompt(prompts, function (props) {
@@ -98,7 +104,7 @@ PlonemockupGenerator.prototype.askFor = function askFor() {
       this.licenseURL = "http://opensource.org/licenses/"+this.packageLicense;
     }
     
-    
+    this.patternName = props.patternName;
 
     cb();
   }.bind(this));
@@ -115,6 +121,7 @@ PlonemockupGenerator.prototype.app = function app() {
   this.template('_Gruntfile.js', 'Gruntfile.js');
   
   this.template('js/bundles/_widgets.js', 'js/bundles/widgets.js');
+  this.template('js/patterns/_base_pattern.js', 'js/patterns/'+ustring.slugify(this.patternName)+'.js');
 };
 
 PlonemockupGenerator.prototype.projectfiles = function projectfiles() {

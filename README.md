@@ -13,6 +13,9 @@ A generator for Yeoman.
 
 ## Changelog
 
+* 0.0.2
+    * Also generate a skeleton for a pattern [frapell]
+
 * 0.0.1
     * Package generated using generator-generator [frapell]
 

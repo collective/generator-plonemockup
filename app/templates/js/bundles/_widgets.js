@@ -8,10 +8,11 @@ if (window.jQuery) {
 
 define([
   'jquery',
-  'mockup-registry'
+  'mockup-registry',
 //   Uncomment the line below to include all patterns from plone-mockup
 //   'mockup-bundles-widgets',
 //   <!~~ Add patterns below this line ~~!>
+  '<%= _.slugify(packageName) %>-patterns-<%= _.slugify(patternName) %>'
 ], function($, registry) {
   "use strict";
 

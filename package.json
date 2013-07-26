@@ -1,6 +1,6 @@
 {
   "name": "generator-plonemockup",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A Plone mockup generator for Yeoman",
   "keywords": [
     "yeoman-generator",
@@ -23,7 +23,8 @@
     "test": "mocha"
   },
   "dependencies": {
-    "yeoman-generator": "~0.12.0"
+    "yeoman-generator": "~0.12.0",
+    "underscore.string": "~2.3.1"
   },
   "devDependencies": {
     "mocha": "~1.10.0"
