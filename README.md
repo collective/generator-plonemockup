@@ -1,5 +1,5 @@
-# Generator-plone-mockup
-[![Build Status](https://secure.travis-ci.org/plone/generator-plone-mockup.png?branch=master)](https://travis-ci.org/plone/generator-plone-mockup)
+# Generator-plonemockup
+[![Build Status](https://secure.travis-ci.org/plone/generator-plonemockup.png?branch=master)](https://travis-ci.org/plone/generator-plonemockup)
 
 Maintainer: [Franco Pellegrini](https://github.com/frapell)
 
@@ -8,8 +8,8 @@ A generator for Yeoman.
 ## Getting started
 - Make sure you have [yo](https://github.com/yeoman/yo) installed:
     `npm install -g yo`
-- Install the generator: `npm install -g generator-plone-mockup`
-- Run: `yo plone-mockup`
+- Install the generator: `npm install -g generator-plonemockup`
+- Run: `yo plonemockup`
 
 ## Changelog
 

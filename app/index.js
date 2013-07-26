@@ -4,7 +4,7 @@ var path = require('path');
 var yeoman = require('yeoman-generator');
 
 
-var Plone-mockupGenerator = module.exports = function Plone-mockupGenerator(args, options, config) {
+var PlonemockupGenerator = module.exports = function PlonemockupGenerator(args, options, config) {
   yeoman.generators.Base.apply(this, arguments);
 
   this.on('end', function () {
@@ -14,37 +14,110 @@ var Plone-mockupGenerator = module.exports = function Plone-mockupGenerator(args
   this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../package.json')));
 };
 
-util.inherits(Plone-mockupGenerator, yeoman.generators.Base);
+util.inherits(PlonemockupGenerator, yeoman.generators.Base);
 
-Plone-mockupGenerator.prototype.askFor = function askFor() {
+PlonemockupGenerator.prototype.askFor = function askFor() {
   var cb = this.async();
 
   // have Yeoman greet the user.
   console.log(this.yeoman);
 
   var prompts = [{
-    type: 'confirm',
-    name: 'someOption',
-    message: 'Would you like to enable this option?',
-    default: true
-  }];
+    name: 'packageName',
+    message: 'Choose a name for your project'
+  },
+  {
+    name: 'packageVersion',
+    message: 'Enter the package version (Default: 0.0.1)',
+    default: "0.0.1"
+  },  
+  {
+    name: 'packageDescription',
+    message: 'Enter here the description for your project (default: "")',
+    default: ""
+  },
+  {
+    name: 'packageHomePage',
+    message: 'Enter here the homepage for your project (default: "")',
+    default: ""
+  },
+  {
+    name: 'packageRepository',
+    message: 'Enter here repositry for your project (default: https://github.com/collective/{packageName})',
+    default: null
+  },  
+  {
+    name: 'authorName',
+    message: 'Enter the author\'s full name'
+  },
+  {
+    name: 'authorEmail',
+    message: 'Enter the author\'s email address'
+  },
+  {
+    name: 'authorUrl',
+    message: 'Enter the author\'s web page (default: "")',
+    default: ""
+  },
+  {
+    name: 'packageLicense',
+    message: 'Choose a license for your project (GPLv2/GPLv3/MIT)',
+    default: "GPLv2"
+  }
+  ];
 
   this.prompt(prompts, function (props) {
-    this.someOption = props.someOption;
+    this.packageName = props.packageName;
+    this.packageVersion = props.packageVersion;
+    this.packageDescription = props.packageDescription;
+    this.packageHomePage = props.packageHomePage;
+
+    if ( !props.packageRepository ){
+      this.packageRepository = "https://github.com/collective/"+this.packageName;
+    }
+    else {
+      this.packageRepository = props.packageRepository;
+    }
+
+    this.authorName = props.authorName;
+    this.authorEmail = props.authorEmail;
+    this.authorUrl = props.authorUrl;
+    
+    this.packageLicense = props.packageLicense;
+    
+    if (this.packageLicense == "GPLv2"){
+      this.licenseURL = "http://opensource.org/licenses/GPL-2.0";
+    }
+    else if (this.packageLicense == "GPLv3"){
+      this.licenseURL = "http://opensource.org/licenses/GPL-3.0";
+    }
+    else if (this.packageLicense == "MIT"){
+      this.licenseURL = "http://opensource.org/licenses/MIT";
+    }
+    else {
+      this.licenseURL = "http://opensource.org/licenses/"+this.packageLicense;
+    }
+    
+    
 
     cb();
   }.bind(this));
 };
 
-Plone-mockupGenerator.prototype.app = function app() {
-  this.mkdir('app');
-  this.mkdir('app/templates');
+PlonemockupGenerator.prototype.app = function app() {
+  this.mkdir('js');
+  this.mkdir('js/bundles');
+  this.mkdir('js/patterns');
 
-  this.copy('_package.json', 'package.json');
-  this.copy('_bower.json', 'bower.json');
+  this.template('_package.json', 'package.json');
+  this.template('_bower.json', 'bower.json');
+  this.template('_config.js', 'config.js');
+  this.template('_Gruntfile.js', 'Gruntfile.js');
+  
+  this.template('js/bundles/_widgets.js', 'js/bundles/widgets.js');
 };
 
-Plone-mockupGenerator.prototype.projectfiles = function projectfiles() {
+PlonemockupGenerator.prototype.projectfiles = function projectfiles() {
   this.copy('editorconfig', '.editorconfig');
   this.copy('jshintrc', '.jshintrc');
 };

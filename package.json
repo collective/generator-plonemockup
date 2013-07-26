@@ -1,14 +1,14 @@
 {
-  "name": "generator-plone-mockup",
+  "name": "generator-plonemockup",
   "version": "0.0.1",
-  "description": "A plone-mockup generator for Yeoman",
+  "description": "A Plone mockup generator for Yeoman",
   "keywords": [
     "yeoman-generator",
     "plone",
     "mockup"
   ],
-  "homepage": "https://github.com/plone/generator-plone-mockup",
-  "bugs": "https://github.com/plone/generator-plone-mockup/issues",
+  "homepage": "https://github.com/plone/generator-plonemockup",
+  "bugs": "https://github.com/plone/generator-plonemockup/issues",
   "author": {
     "name": "Franco Pellegrini",
     "email": "frapell@gmail.com",
@@ -17,7 +17,7 @@
   "main": "app/index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/plone/generator-plone-mockup.git"
+    "url": "git://github.com/plone/generator-plonemockup.git"
   },
   "scripts": {
     "test": "mocha"

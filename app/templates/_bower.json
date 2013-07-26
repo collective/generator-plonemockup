@@ -1,6 +1,8 @@
 {
-  "name": "package",
-  "version": "0.0.0",
-  "dependencies": {}
+  "name": "<%= _.slugify(packageName) %>",
+  "version": "<%= packageVersion %>",
+  "description": "<%= packageDescription %>",
+  "dependencies": {
+    "plone-mockup": "https://github.com/plone/mockup.git"
+  }
 }
-
