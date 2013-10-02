@@ -34,12 +34,12 @@ module.exports = function(grunt) {
     },
     requirejs: {
       options: requirejsOptions,
-      widgets: {
+      bundle: {
         options: {
           name: 'node_modules/almond/almond.js',
-          include: '<%= _.slugify(packageName) %>-bundles-widgets',
-          insertRequire: ['<%= _.slugify(packageName) %>-bundles-widgets'],
-          out: 'build/widgets.min.js',
+          include: '<%= _.slugify(packageName) %>-bundle',
+          insertRequire: ['<%= _.slugify(packageName) %>-bundle'],
+          out: 'build/bundle.min.js',
           excludeShallow: ['jquery']
         }
       }
@@ -50,6 +50,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-karma');
 
-  grunt.registerTask('default', ['requirejs:widgets']);
+  grunt.registerTask('default', ['requirejs:bundle']);
 
 };

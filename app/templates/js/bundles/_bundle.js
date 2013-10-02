@@ -16,15 +16,15 @@ define([
 ], function($, registry) {
   "use strict";
 
-  var <%= packageName %>Widgets = {
-    name: "<%= _.slugify(packageName) %>-widgets",
+  var <%= packageName %>Bundle = {
+    name: "<%= _.slugify(packageName) %>-bundle",
     transform: function($root) {
     // The code you add here will be executed before scanning the DOM
 
     }
   };
 
-  registry.register(<%= packageName %>Widgets);
+  registry.register(<%= packageName %>Bundle);
 
   // initialize only if we are in top frame
   if (window.parent === window) {
@@ -33,5 +33,5 @@ define([
     });
   }
 
-  return <%= packageName %>Widgets;
+  return <%= packageName %>Bundle;
 });

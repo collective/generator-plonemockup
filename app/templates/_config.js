@@ -50,7 +50,7 @@ var requirejsOptions = {
     'mockup-bundles-widgets': 'bower_components/plone-mockup/js/bundles/widgets',
     'mockup-bundles-toolbar': 'bower_components/plone-mockup/js/bundles/toolbar',
     'mockup-bundles-tiles': 'bower_components/plone-mockup/js/bundles/widgets',
-    '<%= _.slugify(packageName) %>-bundles-widgets': 'js/bundles/widgets',
+    '<%= _.slugify(packageName) %>-bundle': 'js/bundles/bundle',
     '<%= _.slugify(packageName) %>-patterns-<%= _.slugify(patternName) %>': 'js/patterns/<%= _.slugify(patternName) %>'
   },
   shim: {
