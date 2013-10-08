@@ -120,8 +120,11 @@ PlonemockupGenerator.prototype.app = function app() {
   this.template('_config.js', 'config.js');
   this.template('_Gruntfile.js', 'Gruntfile.js');
   
-  this.template('js/bundles/_widgets.js', 'js/bundles/widgets.js');
+  this.template('js/bundles/_bundle.js', 'js/bundles/bundle.js');
   this.template('js/patterns/_base_pattern.js', 'js/patterns/'+ustring.slugify(this.patternName)+'.js');
+
+  this.template('dev/_dev.js', 'dev/dev.js');
+  this.template('dev/_dev.html', 'dev/dev.html');
 };
 
 PlonemockupGenerator.prototype.projectfiles = function projectfiles() {
