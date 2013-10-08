@@ -39,8 +39,15 @@ module.exports = function(grunt) {
           name: 'node_modules/almond/almond.js',
           include: '<%= _.slugify(packageName) %>-bundle',
           insertRequire: ['<%= _.slugify(packageName) %>-bundle'],
-          out: 'build/bundle.min.js',
+          out: 'build/bundle.js',
           excludeShallow: ['jquery']
+        }
+      }
+    },
+    uglify: {
+      widgets: {
+        files: {
+          'build/bundle.min.js': ['build/bundle.js']
         }
       }
     }
