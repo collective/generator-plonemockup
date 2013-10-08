@@ -74,7 +74,14 @@ PlonemockupGenerator.prototype.askFor = function askFor() {
 
   this.prompt(prompts, function (props) {
     this.packageName = props.packageName;
-    this.packageVersion = props.packageVersion;
+    var version = props.packageVersion;
+    while (version.split('.').length < 3){
+      version += ".0";
+    }
+    if (version.split('.').length > 3){
+      version = version.split('.').splice(0,3).join('.');
+    }
+    this.packageVersion = version;
     this.packageDescription = props.packageDescription;
     this.packageHomePage = props.packageHomePage;
 
