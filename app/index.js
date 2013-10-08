@@ -114,6 +114,8 @@ PlonemockupGenerator.prototype.app = function app() {
   this.mkdir('js');
   this.mkdir('js/bundles');
   this.mkdir('js/patterns');
+  this.mkdir('less');
+  this.mkdir('dev');
 
   this.template('_package.json', 'package.json');
   this.template('_bower.json', 'bower.json');
@@ -122,6 +124,8 @@ PlonemockupGenerator.prototype.app = function app() {
   
   this.template('js/bundles/_bundle.js', 'js/bundles/bundle.js');
   this.template('js/patterns/_base_pattern.js', 'js/patterns/'+ustring.slugify(this.patternName)+'.js');
+
+  this.template('less/_bundle.less', 'less/bundle.less');
 
   this.template('dev/_dev.js', 'dev/dev.js');
   this.template('dev/_dev.html', 'dev/dev.html');

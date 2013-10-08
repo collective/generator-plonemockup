@@ -45,18 +45,46 @@ module.exports = function(grunt) {
       }
     },
     uglify: {
-      widgets: {
+      bundle: {
         files: {
           'build/bundle.min.js': ['build/bundle.js']
         }
+      }
+    },
+    less: {
+      bundle: {
+        options: {
+          paths: ['less']
+        },
+        files: {
+          'build/bundle.css': 'less/bundle.less'
+        }
+      }
+    },
+    cssmin: {
+      bundle: {
+        expand: true,
+        cwd: 'build/',
+        src: ['bundle.css'],
+        dest: 'build/',
+        ext: '.min.css',
+        report: 'min'
       }
     }
   });
 
   grunt.loadNpmTasks('grunt-contrib-requirejs');
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-karma');
 
-  grunt.registerTask('default', ['requirejs:bundle']);
+  grunt.registerTask('default', [
+      'requirejs:bundle',
+      'uglify:bundle',
+      'less:bundle',
+      'cssmin:bundle'
+      ]);
 
 };
