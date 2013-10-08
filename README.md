@@ -13,14 +13,30 @@ A generator for Yeoman.
 
 ## Changelog
 
+* 0.0.4
+    * Generate a 'bundle' file instead of a 'widgets' one
+    [frapell]
+
+    * Include 'Development mode' files so no need to compile to develop
+    [frapell]
+
+    * Include Uglify, cssmin, and less
+    [frapell]
+
+    * (bugfix) Force version format
+    [frapell]
+
 * 0.0.3
-    * Upgrade to yeoman-generator 0.13.x [frapell]
+    * Upgrade to yeoman-generator 0.13.x
+    [frapell]
 
 * 0.0.2
-    * Also generate a skeleton for a pattern [frapell]
+    * Also generate a skeleton for a pattern
+    [frapell]
 
 * 0.0.1
-    * Package generated using generator-generator [frapell]
+    * Package generated using generator-generator
+    [frapell]
 
 ## License
 [MIT License](http://en.wikipedia.org/wiki/MIT_License)
