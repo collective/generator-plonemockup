@@ -123,6 +123,7 @@ PlonemockupGenerator.prototype.app = function app() {
   this.mkdir('js/patterns');
   this.mkdir('less');
   this.mkdir('dev');
+  this.mkdir('tests');
 
   this.template('_package.json', 'package.json');
   this.template('_bower.json', 'bower.json');
@@ -136,6 +137,9 @@ PlonemockupGenerator.prototype.app = function app() {
 
   this.template('dev/_dev.js', 'dev/dev.js');
   this.template('dev/_dev.html', 'dev/dev.html');
+
+  this.template('tests/_config.js', 'tests/config.js');
+  this.template('tests/_base_test.js', 'tests/pattern-'+ustring.slugify(this.patternName)+'-test.js');
 };
 
 PlonemockupGenerator.prototype.projectfiles = function projectfiles() {

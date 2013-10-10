@@ -1,7 +1,23 @@
 module.exports = function(grunt) {
 
-  var requirejsOptions = require('./config');
+  require('karma-mocha');
+  var requirejsOptions = require('./config'),
+      karmaConfig = require('./node_modules/karma/lib/config'),
+      karma_files = [];
 
+  for (var key in requirejsOptions.paths) {
+    karma_files.push({
+      pattern: requirejsOptions.paths[key] + '.js',
+      included: false
+    });
+  }
+
+  karma_files.push({pattern: 'tests/*-test.js', included: false});
+  karma_files.push({pattern: 'js/patterns/*.js', included: false});
+
+  karma_files.push('config.js');
+  karma_files.push('tests/config.js');
+  
   requirejsOptions.optimize = 'none';
 
   // Project configuration.
@@ -12,24 +28,116 @@ module.exports = function(grunt) {
     },
     karma: {
       options: {
-        configFile: 'tests/karma.conf.js',
-        runnerPort: 9999,
-        browsers: ['Chrome']
+
+        // base path, that will be used to resolve files and exclude
+        basePath: './',
+
+        // frameworks to use
+        frameworks: ['mocha', 'requirejs'],
+
+        // list of files / patterns to load in the browser
+        files: karma_files,
+
+        // list of files to exclude
+        exclude: [ ],
+
+        preprocessors: {
+          'js/patterns/*.js': 'coverage'
+        },
+
+        // test results reporter to use
+        // possible values: dots || progress || growl
+        reporters: ['dots', 'progress', 'coverage'],
+
+        coverageReporter: {
+          type : 'html',
+          dir : 'coverage/'
+        },
+
+        // web server port
+        port: 9876,
+
+        // enable / disable colors in the output (reporters and logs)
+        colors: true,
+
+        // level of logging
+        // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
+        logLevel: karmaConfig.LOG_INFO,
+
+        // enable / disable watching file and executing tests whenever any file changes
+        autoWatch: true,
+
+        // If browser does not capture in given timeout [ms], kill it
+        captureTimeout: 60000,
+
+        plugins: [
+          'karma-mocha',
+          'karma-coverage',
+          'karma-requirejs',
+          'karma-sauce-launcher',
+          'karma-chrome-launcher',
+          'karma-phantomjs-launcher',
+          'karma-junit-reporter'
+        ]
       },
       dev: {
-        autoWatch: true
+        // Start these browsers, currently available:
+        // - Chrome
+        // - ChromeCanary
+        // - Firefox
+        // - Opera
+        // - Safari (only Mac)
+        // - PhantomJS
+        // - IE (only Windows)
+        browsers: ['PhantomJS']
+      },
+      dev_chrome: {
+        browsers: ['Chrome'],
+        preprocessors: {},
+        reporters: ['dots', 'progress'],
+        plugins: [
+          'karma-mocha',
+          'karma-requirejs',
+          'karma-sauce-launcher',
+          'karma-chrome-launcher',
+          'karma-phantomjs-launcher',
+          'karma-junit-reporter'
+        ]
       },
       ci: {
         singleRun: true,
-        reporters: ['dots', 'junit', 'coverage'],
+        browsers: ['sauce_chrome'],
+
+        reporters: ['junit', 'coverage'],
         junitReporter: {
           outputFile: 'test-results.xml'
         },
         coverageReporter: {
-          type : 'cobertura',
+          type : 'lcovonly',
           dir : 'coverage/'
+        },
+
+        sauceLabs: {
+          testName: 'packageName',
+          startConnect: true
+        },
+        customLaunchers: {
+          'sauce_chrome': {
+             base: 'SauceLabs',
+             platform: 'Windows 8',
+             browserName: 'chrome'
+           },
+          'sauce_firefox': {
+             base: 'SauceLabs',
+             platform: 'Windows 8',
+             browserName: 'firefox'
+           },
+           'sauce_ie': {
+             base: 'SauceLabs',
+             platform: 'Windows 8',
+             browserName: 'internet explorer'
+           }
         }
-        // SauceLabs stuff comes here
       }
     },
     requirejs: {
@@ -79,6 +187,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-karma');
+
+  grunt.registerTask('test', [
+      'karma:dev'
+      ]);
 
   grunt.registerTask('default', [
       'requirejs:bundle',

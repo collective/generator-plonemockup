@@ -4,5 +4,8 @@
   "description": "<%= packageDescription %>",
   "dependencies": {
     "plone-mockup": "https://github.com/plone/mockup.git"
+  },
+  "devDependencies": {
+    "chai": "1.7.2"
   }
 }
