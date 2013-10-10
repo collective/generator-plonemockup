@@ -23,6 +23,12 @@ A generator for Yeoman.
     * Include Uglify, cssmin, and less
     [frapell]
 
+    * Generate a test skeleton with the needed infrastructure
+    [frapell]
+
+    * Generate a README.md so 'npm install' doesn't give a warning about it
+    [frapell]
+
     * (bugfix) Force version format
     [frapell]
 

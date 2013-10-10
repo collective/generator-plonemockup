@@ -129,6 +129,7 @@ PlonemockupGenerator.prototype.app = function app() {
   this.template('_bower.json', 'bower.json');
   this.template('_config.js', 'config.js');
   this.template('_Gruntfile.js', 'Gruntfile.js');
+  this.template('_README.md', 'README.md');
   
   this.template('js/bundles/_bundle.js', 'js/bundles/bundle.js');
   this.template('js/patterns/_base_pattern.js', 'js/patterns/'+ustring.slugify(this.patternName)+'.js');
