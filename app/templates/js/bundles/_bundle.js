@@ -16,7 +16,7 @@ define([
 ], function($, registry) {
   "use strict";
 
-  var <%= packageName %>Bundle = {
+  var <%= _.slugify(packageName) %>Bundle = {
     name: "<%= _.slugify(packageName) %>-bundle",
     transform: function($root) {
     // The code you add here will be executed before scanning the DOM
@@ -24,7 +24,7 @@ define([
     }
   };
 
-  registry.register(<%= packageName %>Bundle);
+  registry.register(<%= _.slugify(packageName) %>Bundle);
 
   // initialize only if we are in top frame
   if (window.parent === window) {
@@ -33,5 +33,5 @@ define([
     });
   }
 
-  return <%= packageName %>Bundle;
+  return <%= _.slugify(packageName) %>Bundle;
 });

@@ -13,6 +13,10 @@ A generator for Yeoman.
 
 ## Changelog
 
+* unreleased
+    * (bugfix) Support dots in package name
+    [ebrehault]
+    
 * 0.0.4
     * Generate a 'bundle' file instead of a 'widgets' one
     [frapell]
