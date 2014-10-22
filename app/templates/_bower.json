@@ -3,7 +3,7 @@
   "version": "<%= packageVersion %>",
   "description": "<%= packageDescription %>",
   "dependencies": {
-    "plone-mockup": "https://github.com/plone/mockup.git"
+    "plone-mockup": "1.7.0"
   },
   "devDependencies": {
     "chai": "1.7.2"

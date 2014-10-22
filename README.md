@@ -13,6 +13,10 @@ A generator for Yeoman.
 
 ## Changelog
 
+* 0.0.5
+    * Make the generator compatible with Mockup 1.7.0
+    [frapell]
+
 * 0.0.4
     * Generate a 'bundle' file instead of a 'widgets' one
     [frapell]

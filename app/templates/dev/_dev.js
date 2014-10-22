@@ -8,12 +8,12 @@
     script_config.setAttribute('src', '../config.js');
     script_config.onload = function() {
       requirejs.config({ baseUrl: '../' });
-      require(['<%= _.slugify(packageName) %>-bundle']);
+      require(['mockup-bundles-<%= _.slugify(packageName) %>']);
     };
 
     var script_require = document.createElement('script');
     script_require.setAttribute('type', 'text/javascript');
-    script_require.setAttribute('src', '../bower_components/requirejs/require.js');
+    script_require.setAttribute('src', '../node_modules/requirejs/require.js');
     script_require.onload = function() {
       document.getElementsByTagName("head")[0].appendChild(script_config);
     };
