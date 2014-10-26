@@ -20,10 +20,10 @@ fi
 
 echo "apt-get update & install system packages"
 apt-get -qq update
-apt-get install -yq npm nodejs-legacy git
+apt-get install -yq npm nodejs-legacy git phantomjs
 
-echo "Wiring up npm cache"
-npm config get cache
+# echo "Wiring up npm cache"
+# npm config get cache
 
 echo "Install local development"
 # It would be nice to use npm link but I cannot seem to make it work properly

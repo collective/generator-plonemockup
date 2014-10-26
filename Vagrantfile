@@ -31,12 +31,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     config.vm.synced_folder ".", "/vagrant"
 
-    if Vagrant.has_plugin?("vagrant-cachier")
-        config.cache.scope = :box
-        config.cache.enable :apt_lists
-        config.cache.enable :apt
-        config.cache.enable :npm
-    end
+    # if Vagrant.has_plugin?("vagrant-cachier")
+        # config.cache.scope = :box
+        # config.cache.enable :apt_lists
+        # config.cache.enable :apt
+        # config.cache.enable :npm
+    # end
   end
 
   config.vm.provider "virtualbox" do |vb|
