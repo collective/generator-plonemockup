@@ -17,6 +17,8 @@ module.exports = function(grunt) {
         }
       }
     }
+  }, {
+    url: '<%= _.slugify(packageName) %>'
   });
 
   mockup.initGrunt(grunt, {
